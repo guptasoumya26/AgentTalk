@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgentTalk - Multi-Agent Collaboration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-top">
+                <h1>🤖 AgentTalk</h1>
+                <button id="darkModeToggle" class="dark-mode-toggle" title="Toggle Dark Mode">
+                    <span class="toggle-icon">🌙</span>
+                </button>
+            </div>
+            <p class="subtitle">Watch AI Agents Collaborate in Real-Time</p>
+            <div id="agentStatus" class="agent-status"></div>
+        </header>
+
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="sequential">Sequential Workflow</button>
+                <button class="tab-btn" data-tab="discussion">Round-Robin Discussion</button>
+            </div>
+
+            <!-- Sequential Workflow Tab -->
+            <div id="sequential-tab" class="tab-content active">
+                <h3>Sequential Workflow</h3>
+                <p class="description">Agents work one after another on your project</p>
+                <textarea id="sequentialInput" placeholder="e.g., Build a todo app with user authentication and dark mode"></textarea>
+                <button onclick="runSequentialWorkflow()" class="btn btn-primary">Start Workflow</button>
+            </div>
+
+            <!-- Discussion Tab -->
+            <div id="discussion-tab" class="tab-content">
+                <h3>Round-Robin Discussion</h3>
+                <p class="description">Agents discuss a topic in turns</p>
+                <input type="text" id="discussionTopic" placeholder="e.g., What's the best way to handle user sessions?">
+                <div class="rounds-selector">
+                    <label>Rounds:</label>
+                    <select id="discussionRounds">
+                        <option value="1">1</option>
+                        <option value="2" selected>2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+                <button onclick="runDiscussion()" class="btn btn-primary">Start Discussion</button>
+            </div>
+
+            <button onclick="resetConversation()" class="btn btn-secondary">Reset</button>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Agent Animation Panel -->
+            <div class="agent-animation-panel">
+                <h3>Agents at Work</h3>
+                <div id="agentVisualizer" class="agent-visualizer">
+                    <div class="agent-node" id="node-chatgpt">
+                        <div class="agent-icon">🤖</div>
+                        <div class="agent-label">ChatGPT</div>
+                        <div class="agent-pulse"></div>
+                    </div>
+                    <div class="connection-line"></div>
+                    <div class="agent-node" id="node-gemini">
+                        <div class="agent-icon">✨</div>
+                        <div class="agent-label">Gemini</div>
+                        <div class="agent-pulse"></div>
+                    </div>
+                    <div class="connection-line"></div>
+                    <div class="agent-node" id="node-groq">
+                        <div class="agent-icon">⚡</div>
+                        <div class="agent-label">Groq</div>
+                        <div class="agent-pulse"></div>
+                    </div>
+                    <div class="data-packet"></div>
+                </div>
+                <div class="animation-status">
+                    <p id="animationStatus">Idle - Waiting for work...</p>
+                </div>
+            </div>
+
+            <!-- Conversation Display -->
+            <div class="conversation-container">
+                <h2>Agent Conversation</h2>
+                <div id="conversationFlow" class="conversation-flow">
+                    <div class="empty-state">
+                        <p>👆 Start a workflow or discussion to see agents collaborate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+            <div class="loading-spinner"></div>
+            <p>Agents are thinking...</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
