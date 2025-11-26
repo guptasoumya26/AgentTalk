@@ -212,20 +212,6 @@ const shouldCollapse = lineCount > 10 || message.length > 800;
 // Change these numbers to adjust collapse behavior
 ```
 
-## 💰 Cost Analysis
-
-### Development & Testing
-- **OpenAI (GPT-3.5)**: ~$0.002 per 1K tokens
-- **Gemini**: **FREE!** (Generous quota)
-- **Groq**: **FREE!** (Ultra-fast, free tier available)
-- **Total for development**: $5-10 using free credits
-
-### Per Demo/Showcase
-- **Simple request**: ~$0.05-0.10 (if using OpenAI)
-- **Complex workflow**: ~$0.20-0.50 (if using OpenAI)
-- **Full demo recording**: ~$2-5 (if using OpenAI)
-
-
 ## 📝 License
 
 MIT License
